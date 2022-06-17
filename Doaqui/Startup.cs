@@ -82,10 +82,6 @@ namespace Doaqui
             }
             );
 
-            // Configure Swagger
-            // TODO: Fix swagger add later on.
-            services.AddSwaggerGen(c =>
-
             // Configuração Swagger
             services.AddSwaggerGen(
             s =>
@@ -125,7 +121,7 @@ namespace Doaqui
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 s.IncludeXmlComments(xmlPath);
             }
-            ));
+            );
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DoaquiContexto contexto)
