@@ -104,7 +104,7 @@ namespace Doaqui.src.controllers
         }
 
         /// <summary>
-        /// Deletar solicitacao pelo Cnpj
+        /// Deletar solicitacao pelo Id
         /// </summary>
         /// <param name="idsolicitacao">Id da solicitação</param>
         /// <returns>ActionResult</returns>

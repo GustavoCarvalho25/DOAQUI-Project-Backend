@@ -136,7 +136,7 @@ namespace Doaqui.src.controllers
         }
 
         /// <summary>
-        /// Deletar doacao pelo Cnpj
+        /// Deletar doacao pelo Id
         /// </summary>
         /// <param name="idDoacao">Id da doação</param>
         /// <returns>ActionResult</returns>
