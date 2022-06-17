@@ -69,19 +69,9 @@ namespace Doaqui.src.repositories.implementations
         /// </summary>
         /// <param name="email">Email do usuario</param>
         /// <return>UsuarioModelo</return>
-        /// <exception cref="Exception">Caso não encontre o usuario</exception>
         public async Task<UsuarioModelo> PegarUsuarioPeloEmailAsync(string email)
         {
-            if (!await ExisteEmail(email)) throw new Exception("Email de usuario não encontrado");
-
             return await _contexto.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
-
-            // função auxiliar
-            async Task<bool> ExisteEmail(string email)
-            {
-                var auxiliar = await _contexto.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
-                return auxiliar != null;
-            }
         }
 
          /// <summary>
