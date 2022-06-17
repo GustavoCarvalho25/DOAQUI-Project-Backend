@@ -77,14 +77,9 @@ namespace Doaqui.src.controllers
         [Authorize]
         public async Task<ActionResult> PegarUsuarioPeloEmailAsync([FromRoute] string emailUsuario)
         {
-            try
-            {
-                return Ok(await _repositorio.PegarUsuarioPeloEmailAsync(emailUsuario));
-            }
-            catch (Exception ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+                var usuario = await _repositorio.PegarUsuarioPeloEmailAsync(emailUsuario);
+                if (usuario == null) return NotFound(new { message = "Usuario não existe" });
+                return Ok(usuario);
         }
 
         /// <summary>
@@ -178,8 +173,8 @@ namespace Doaqui.src.controllers
         ///     PUT /api/Usuarios
         ///     {
         ///        "id": 1, 
-        ///        "senhaAntiga": "Naomy Santana",
-        ///        "senhaNova": "naozinha@email.com"
+        ///        "senhaAntiga": "134652",
+        ///        "senhaNova": "123456"
         ///      }
         ///
         /// </remarks>
@@ -203,7 +198,7 @@ namespace Doaqui.src.controllers
         }
 
         /// <summary>
-        /// Deletar usuario pelo Cnpj
+        /// Deletar usuario pelo Id
         /// </summary>
         /// <param name="id">Id usuario</param>
         /// <returns>ActionResult</returns>

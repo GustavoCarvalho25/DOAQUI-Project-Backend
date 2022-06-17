@@ -40,7 +40,10 @@ namespace Doaqui.src.repositories.implementations
         /// <return>Lista SolicitacoesModelo</return>
         public async Task<List<SolicitacaoModelo>> PegarTodasSolicitacoesAsync()
         {
-            return await _contexto.Solicitacoes.ToListAsync();
+            return await _contexto.Solicitacoes
+                .Include(s => s.ONG)
+                .Include(s => s.Doacao)
+                .ToListAsync();
         }
 
         /// <summary>
@@ -53,7 +56,11 @@ namespace Doaqui.src.repositories.implementations
         {
             if (!ExisteId(idONG)) throw new Exception("Id da ONG não encontrado");
 
-            return await _contexto.Solicitacoes.Where(s => s.ONG.Id == idONG).ToListAsync();
+            return await _contexto.Solicitacoes
+                .Include(s => s.ONG)
+                .Include(s => s.Doacao)
+                .Where(s => s.ONG.Id == idONG)
+                .ToListAsync();
 
             // função auxiliar
             bool ExisteId(int idONG)
