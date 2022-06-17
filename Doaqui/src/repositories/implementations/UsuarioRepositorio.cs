@@ -80,7 +80,7 @@ namespace Doaqui.src.repositories.implementations
             bool ExisteEmail(string email)
             {
                 var auxiliar = _contexto.Usuarios.FirstOrDefault(u => u.Email == email);
-                return auxiliar != null;
+                return auxiliar == null;
             }
         }
 
