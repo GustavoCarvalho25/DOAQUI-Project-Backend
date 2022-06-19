@@ -112,7 +112,7 @@ namespace Doaqui.src.controllers
         ///
         ///     PUT /api/Doacoes
         ///     {
-        ///        "id": 1    
+        ///        "id": 1, 
         ///        "titulo": "Doação de cesta Básica",    
         ///        "descricao": "Cestas para doação comunitaria",
         ///        "contato": "empresa@email.com",

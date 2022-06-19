@@ -108,7 +108,7 @@ namespace Doaqui.src.repositories.implementations
                 var aux1 = await _contexto.Doacoes.FirstOrDefaultAsync(d => d.Id == idDoacao);
                 var result1 = aux1.Quantidade - aux1.Limite;
 
-                if (result1 < 0)
+                if (result1 <= 0)
                 {
                     aux1.Quantidade = 0;
                     aux1.Status = StatusDoacao.INATIVO;
