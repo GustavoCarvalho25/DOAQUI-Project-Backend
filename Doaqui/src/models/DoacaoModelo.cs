@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using Doaqui.src.utilidades;
 
 namespace Doaqui.src.models
 {
@@ -26,11 +27,14 @@ namespace Doaqui.src.models
 
         public int Quantidade { get; set; }
 
+        public int Limite { get; set; }
+
         public string Validade { get; set; }
 
         public string Foto { get; set; }
 
         public string CNPJDoador { get; set; }
-          
+
+        public StatusDoacao Status { get; set; }
     }
 }

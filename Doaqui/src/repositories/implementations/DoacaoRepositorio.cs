@@ -1,6 +1,7 @@
 ﻿using Doaqui.src.data;
 using Doaqui.src.dtos;
 using Doaqui.src.models;
+using Doaqui.src.utilidades;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,9 @@ namespace Doaqui.src.repositories.implementations
         /// <return>Lista DoacaoModelo</return>
         public async Task<List<DoacaoModelo>> PegarTodasDoacoesAsync()
         {
-            return await _contexto.Doacoes.ToListAsync();
+            return await _contexto.Doacoes
+                .Where(d => d.Status == StatusDoacao.ATIVO)
+                .ToListAsync();
         }
 
         /// <summary>
@@ -75,9 +78,11 @@ namespace Doaqui.src.repositories.implementations
                 Descricao = dto.Descricao,
                 Contato = dto.Contato,
                 Quantidade = dto.Quantidade,
+                Limite = dto.Limite,
                 Validade = dto.Validade,
                 Foto = dto.Foto,
                 CNPJDoador = dto.CNPJDoador,
+                Status = StatusDoacao.ATIVO
             });
            await _contexto.SaveChangesAsync();
         }
@@ -93,6 +98,7 @@ namespace Doaqui.src.repositories.implementations
             modelo.Descricao = dto.Descricao;
             modelo.Contato = dto.Contato;
             modelo.Quantidade = dto.Quantidade;
+            modelo.Limite = dto.Limite;
             modelo.Validade = dto.Validade;
             modelo.Foto = dto.Foto;
             modelo.CNPJDoador = dto.CNPJDoador;

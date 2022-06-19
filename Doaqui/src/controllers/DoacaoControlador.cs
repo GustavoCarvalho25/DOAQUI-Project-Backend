@@ -81,6 +81,7 @@ namespace Doaqui.src.controllers
         ///        "descricao": "Cestas para doação comunitaria",
         ///        "contato": "empresa@email.com",
         ///        "quantidade": 25,
+        ///        "limite": 5,
         ///        "validade": "dd/mm/aaaa",
         ///        "foto": "URL DA FOTO",
         ///        "cNPJDoador": "999.999.999.99"
@@ -116,6 +117,7 @@ namespace Doaqui.src.controllers
         ///        "descricao": "Cestas para doação comunitaria",
         ///        "contato": "empresa@email.com",
         ///        "quantidade": 25,
+        ///        "limite": 5,
         ///        "validade": "dd/mm/aaaa",
         ///        "foto": "URL DA FOTO",
         ///        "cNPJDoador": "999.999.999.99"

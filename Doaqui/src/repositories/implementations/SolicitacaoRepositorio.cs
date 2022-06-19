@@ -1,6 +1,7 @@
 ﻿using Doaqui.src.data;
 using Doaqui.src.dtos;
 using Doaqui.src.models;
+using Doaqui.src.utilidades;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,8 @@ namespace Doaqui.src.repositories.implementations
 
             if (!ExisteIdDoacao(dto.IdDoacao)) throw new Exception("Id da doação não encontrado");
 
+            await RegraRestaInativa(dto.IdDoacao);
+
             await _contexto.Solicitacoes.AddAsync(new SolicitacaoModelo
             {
                 ONG = await _contexto.Usuarios.FirstOrDefaultAsync(u => u.Id == dto.IdONG),
@@ -98,6 +101,23 @@ namespace Doaqui.src.repositories.implementations
             {
                 var auxiliar = _contexto.Doacoes.FirstOrDefault(d => d.Id == idDoacao);
                 return auxiliar != null;
+            }
+
+            async Task RegraRestaInativa(int idDoacao)
+            {
+                var aux1 = await _contexto.Doacoes.FirstOrDefaultAsync(d => d.Id == idDoacao);
+                var result1 = aux1.Quantidade - aux1.Limite;
+
+                if (result1 < 0)
+                {
+                    aux1.Quantidade = 0;
+                    aux1.Status = StatusDoacao.INATIVO;
+                }
+                else
+                {
+                    aux1.Quantidade = result1;
+                }
+                await _contexto.SaveChangesAsync();
             }
         }
 

@@ -11,4 +11,14 @@ namespace Doaqui.src.utilidades
         ONG,
         ADMINISTRADOR
     }
+
+    /// <summary>
+    /// <para>Resumo: Enum responsavel por definir Status Doacao</para>
+    /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum StatusDoacao
+    {
+        ATIVO,
+        INATIVO
+    }
 }

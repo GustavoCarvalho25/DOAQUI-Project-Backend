@@ -22,6 +22,9 @@ namespace Doaqui.src.dtos
         [Required]
         public int Quantidade { get; set; }
 
+        [Required]
+        public int Limite { get; set; }
+
         [Required, StringLength(100)]
         public string Validade  { get; set; }
 
@@ -31,12 +34,13 @@ namespace Doaqui.src.dtos
         [Required, StringLength(100)]
         public string CNPJDoador { get; set; }
 
-        public NovaDoacaoDTO(string titulo, string descricao, string contato, int quantidade, string validade, string foto, string cNPJDoador)
+        public NovaDoacaoDTO(string titulo, string descricao, string contato, int quantidade, int limite, string validade, string foto, string cNPJDoador)
         {
             Titulo = titulo;
             Descricao = descricao;
             Contato = contato;
             Quantidade = quantidade;
+            Limite = limite;
             Validade = validade;
             Foto = foto;
             CNPJDoador = cNPJDoador;
@@ -66,6 +70,9 @@ namespace Doaqui.src.dtos
         [Required]
         public int Quantidade { get; set; }
 
+        [Required]
+        public int Limite { get; set; }
+
         [Required, StringLength(100)]
         public string Validade  { get; set; }
 
@@ -75,13 +82,14 @@ namespace Doaqui.src.dtos
         [Required, StringLength(100)]
         public string CNPJDoador { get; set; }
 
-        public AtualizarDoacaoDTO(int id, string titulo, string descricao, string contato, int quantidade, string validade, string foto, string cNPJDoador)
+        public AtualizarDoacaoDTO(int id, string titulo, string descricao, string contato, int quantidade, int limite, string validade, string foto, string cNPJDoador)
         {
             Id = id;
             Titulo = titulo;
             Descricao = descricao;
             Contato = contato;
             Quantidade = quantidade;
+            Limite = limite;
             Validade = validade;
             Foto = foto;
             CNPJDoador = cNPJDoador;
