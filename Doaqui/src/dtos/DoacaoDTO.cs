@@ -76,7 +76,7 @@ namespace Doaqui.src.dtos
         [Required, StringLength(100)]
         public string Validade  { get; set; }
 
-        [Required, StringLength(100)]
+        [Required, StringLength(500)]
         public string Foto { get; set; }
         
         [Required, StringLength(100)]
